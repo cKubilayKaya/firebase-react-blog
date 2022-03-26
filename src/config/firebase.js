@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth, createUserWithEmailAndPassword, updateCurrentUser } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, updateCurrentUser, signInWithEmailAndPassword } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBJTp3WD1OldqFCMp2l6VBHFcXKfqOaEBU",
@@ -21,4 +21,6 @@ export const signUp = async (name, email, pass) => {
   await updateCurrentUser(auth, { displayName: name });
 };
 
-export const signIn = (email, pass) => {};
+export const signIn = async (email, pass) => {
+  await signInWithEmailAndPassword(auth, email, pass);
+};
