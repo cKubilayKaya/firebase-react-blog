@@ -1,7 +1,15 @@
-import "./App.css";
+import React, { useEffect } from "react";
+import { signUp } from "./config/firebase";
 
-function App() {
-  return <div className="App">test</div>;
+export default function App() {
+  useEffect(() => {
+    signUp("kubilay", "kkubilay24@gmail.com", "123123")
+      .then(() => console.log("done"))
+      .catch((err) => console.log(err));
+  }, []);
+  return (
+    <div>
+      <h1>App</h1>
+    </div>
+  );
 }
-
-export default App;
