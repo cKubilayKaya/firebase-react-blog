@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { TextField, CssBaseline, Button, Box, Typography } from "@mui/material";
+import { TextField, Button, Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { changeEmail, changePassword, login } from "../redux/authSlice";
 
@@ -11,7 +11,6 @@ export default function SignIn() {
 
   return (
     <div className="container">
-      <CssBaseline />
       <Typography variant="h5" sx={{ textAlign: "center" }}>
         Sign in
       </Typography>
