@@ -2,10 +2,11 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { TextField, CssBaseline, Button, Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import { changeEmail, changePassword } from "../redux/authSlice";
+import { changeEmail, changePassword, login } from "../redux/authSlice";
 
 export default function SignIn() {
   const auth = useSelector((state) => state.auth);
+  const { email, password } = auth;
   const dispatch = useDispatch();
 
   return (
@@ -14,7 +15,14 @@ export default function SignIn() {
       <Typography variant="h5" sx={{ textAlign: "center" }}>
         Sign in
       </Typography>
-      <Box component="form">
+      {auth.error && <p className="error">{auth.error.split("auth/")[1].replaceAll("-", " ")}</p>}
+      <Box
+        component="form"
+        onSubmit={(e) => {
+          e.preventDefault();
+          dispatch(login({ email, password }));
+        }}
+      >
         <TextField
           fullWidth
           margin="normal"
